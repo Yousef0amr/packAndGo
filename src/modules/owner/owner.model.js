@@ -11,6 +11,10 @@ const schema = new mongoose.Schema({
         required: true,
         trim: true,
     },
+    phone: {
+        type: String,
+        required: true,
+    },
     email: {
         type: String,
         required: true,
@@ -20,6 +24,11 @@ const schema = new mongoose.Schema({
     },
     password: {
         type: String,
+        required: true,
+    },
+    signWithGoogle: {
+        type: Boolean,
+        default: false,
         required: true,
     },
     role: {

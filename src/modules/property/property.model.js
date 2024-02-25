@@ -53,6 +53,16 @@ const schema = new mongoose.Schema({
     description: {
         type: String,
         required: true
+    },
+    available: {
+        type: Boolean,
+        required: true,
+        default: true
+    },
+    owner: {
+        type: mongoose.Types.ObjectId,
+        required: true,
+        ref: 'Owner'
     }
 },
     setting);

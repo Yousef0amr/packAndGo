@@ -7,5 +7,6 @@ module.exports = Joi.object({
     email: Joi.string().email().required(),
     phone: Joi.string().min(10).max(11).required(),
     password: Joi.string().required(),
+    signWithGoogle: Joi.string().required(),
 });
 

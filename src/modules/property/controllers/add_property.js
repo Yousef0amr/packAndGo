@@ -12,23 +12,14 @@ const addProperty = wrap(
 
         value.image = await uploadMedia(files.logo[0].path, `pack-and-Go/properties/images`)
         const images = await Promise.all(files.property_images.map(async file => {
-            const image = await cloudinary.uploader.upload(file.path, {
-                folder: `pack-and-Go/properties/images`,
-                public_id: uuidv4(),
-                use_filename: true,
-                unique_filename: true,
-                resource_type: "auto"
-            });
-
+            const image = await uploadMedia(file.path, `pack-and-Go/properties/images`)
             return `${image.public_id}`;
         }));
         value.property_images = images
-
         value.location = transformLocation(value.location)
-
+        value.owner = req.userId
 
         const property = await create(Property, value)
-
         return Success(res, 'added Property successfully', { property })
     }
 )

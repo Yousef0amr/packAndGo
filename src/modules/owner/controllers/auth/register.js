@@ -8,15 +8,14 @@ const uploadMedia = require('./../../../../utils/uploadMedia')
 const register = wrap(
     async (req, res, next) => {
         const value = { ...req.body }
-
+        const files = req.files
         const isExist = await checkEmailDB(Owner, value.email)
         if (isExist) {
             return next(new ApiError("Email is already registered", 400));
         }
-
-
         value.password = await hashPassword(value.password)
-        value.logo = await uploadMedia(req.files.logo[0], 'pack&Go/owners/logo')
+        value.logo = await uploadMedia(files.logo[0].path, 'pack-and-Go/owners/logo')
+
         const owner = new Owner({
             ...value
         });

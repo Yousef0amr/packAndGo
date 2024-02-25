@@ -21,7 +21,7 @@ const router = express.Router();
 
 
 router.route('/register')
-    .post(multerConfig().fields({ name: 'logo', maxCount: 1 }), validateRequest(ownerShema), register);
+    .post(multerConfig().fields([{ name: 'logo', maxCount: 1 }]), validateRequest(ownerShema), register);
 
 router.route('/login')
     .post(multerConfig().array(), validateRequest(loginSchema), login);
