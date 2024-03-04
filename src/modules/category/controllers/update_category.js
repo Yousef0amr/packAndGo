@@ -9,7 +9,7 @@ const updateCategory = wrap(
         const value = { ...req.body }
         const category = await updateByID(Category, id, value);
 
-        return Success(res, "service updated successfully", category)
+        return Success(res, "category updated successfully", category)
     }
 )
 

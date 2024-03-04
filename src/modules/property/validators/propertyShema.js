@@ -7,11 +7,12 @@ module.exports = Joi.object({
     location: Joi.string().required(),
     image: fileSchema.max(1),
     property_images: fileSchema,
-    type: Joi.string().valid('sell', 'rent').required(),
+    type: Joi.string().required(),
+    rent_period: Joi.string().required(),
     price: Joi.string().required(),
     features: Joi.array().items(Joi.string()),
     numberOfRooms: Joi.string().required(),
-    facilities: Joi.array().items(Joi.string()),
+    facilities: Joi.array().items(Joi.string()).optional(),
     description: Joi.string().required(),
 });
 

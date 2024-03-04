@@ -7,7 +7,10 @@ const { ownerFilter } = require('./../../../utils/filters')
 const getOwner = wrap(
     async (req, res, next) => {
         const id = req.userId
-        const owner = await Owner.findById(id, { ...ownerFilter })
+        const owner = await Owner.findById(id, { ...ownerFilter }).populate({
+            path: 'listings'
+        }).exec()
+
         return Success(res, 'OK', { owner })
     }
 )

@@ -42,4 +42,11 @@ const schema = new mongoose.Schema({
 },
     setting);
 
+schema.virtual('listings', {
+    ref: 'Property',
+    localField: '_id',
+    foreignField: 'owner'
+})
+
+
 module.exports = mongoose.model('Owner', schema);

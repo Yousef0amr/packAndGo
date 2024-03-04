@@ -3,7 +3,7 @@ const Joi = require('joi')
 
 module.exports = Joi.object({
     logo: fileSchema.max(1),
-    name: Joi.string().required(),
+    type: Joi.string().required(),
 });
 
 

@@ -10,15 +10,13 @@ const addProperty = wrap(
         const value = { ...req.body }
         const files = req.files
 
-        value.image = await uploadMedia(files.logo[0].path, `pack-and-Go/properties/images`)
+        value.image = await uploadMedia(files.image[0].path, `pack-and-Go/properties/images`)
         const images = await Promise.all(files.property_images.map(async file => {
-            const image = await uploadMedia(file.path, `pack-and-Go/properties/images`)
-            return `${image.public_id}`;
+            return await uploadMedia(file.path, `pack-and-Go/properties/images`)
         }));
         value.property_images = images
         value.location = transformLocation(value.location)
         value.owner = req.userId
-
         const property = await create(Property, value)
         return Success(res, 'added Property successfully', { property })
     }

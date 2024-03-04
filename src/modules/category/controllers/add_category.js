@@ -9,7 +9,7 @@ const addCategory = wrap(
         const value = { ...req.body }
         const files = req.files
 
-        value.logo = await uploadMedia(files.logo[0].path, `leapTeck/categories/logo`)
+        value.logo = await uploadMedia(files.logo[0].path, `pack-and-go/categories/logo`)
         const category = await create(Category, value)
 
         return Success(res, 'added Category successfully', { category })

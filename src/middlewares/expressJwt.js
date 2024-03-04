@@ -27,6 +27,8 @@ const ownerAllowedUrls = [
     { method: 'PATCH', url: `${endpoints.OWNER}/current-owner` },
     { method: 'DELETE', url: `${endpoints.OWNER}/current-owner` },
     { method: 'POST', url: `${endpoints.OWNER}/change-owner` },
+    { method: 'GET', url: `${endpoints.CATEGORY}` },
+    { method: 'POST', url: `${endpoints.PROPERTY}` },
 ]
 
 const isRevoked = wrap(async (req, token) => {

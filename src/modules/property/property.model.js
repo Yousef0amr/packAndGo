@@ -28,7 +28,7 @@ const schema = new mongoose.Schema({
     type: {
         type: String,
         required: true,
-        enum: ['sell', 'rent']
+        enum: ['Sell', 'Rent']
     },
     price: {
         type: String,
@@ -59,6 +59,10 @@ const schema = new mongoose.Schema({
         required: true,
         default: true
     },
+    rent_period: {
+        type: String,
+        enum: ['Daily', 'Monthly', 'Yearly', ''],
+    },
     owner: {
         type: mongoose.Types.ObjectId,
         required: true,
@@ -68,13 +72,6 @@ const schema = new mongoose.Schema({
     setting);
 
 
-if (schema.path('type').enumValues.includes('rent')) {
-    schema.add({
-        rent_period: {
-            type: String,
-            enum: ['daily', 'monthly', 'yearly'],
-        }
-    });
-}
+
 
 module.exports = mongoose.model('Property', schema);
