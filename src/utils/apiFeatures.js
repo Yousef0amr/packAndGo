@@ -16,9 +16,9 @@ class ApiFeatures {
 
     filter = (filterOptions) => {
         const excluded = ['sort', 'page', 'size', 'fields', 'searchKey', 'ln', 'status'];
-        console.log(filterOptions)
+
         let queryFields = { ...this.queryData, ...filterOptions }; // Merge with filter options
-        console.log(queryFields);
+
         // Remove excluded fields
         excluded.forEach(ele => {
             delete queryFields[ele];

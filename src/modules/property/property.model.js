@@ -72,6 +72,13 @@ const schema = new mongoose.Schema({
     setting);
 
 
-
+schema.pre('find', function () {
+    this.populate({
+        path: 'owner',
+        select: 'name phone email logo'
+    }).populate({
+        path: 'category'
+    })
+})
 
 module.exports = mongoose.model('Property', schema);
