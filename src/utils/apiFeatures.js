@@ -37,23 +37,8 @@ class ApiFeatures {
                 case 'ratingsAvg':
                     this.mongooseQuery.find({ ratingsAvg: queryFields[field] });
                     break;
-                case 'location':
-                    if (queryFields[field].coordinates) {
-                        this.mongooseQuery.find({
-                            'businessInfo.location': {
-                                $near: {
-                                    $geometry: {
-                                        type: 'Point',
-                                        coordinates: queryFields[field].coordinates,
-                                    },
-                                    $maxDistance: queryFields[field].maxDistance || 10000,
-                                },
-                            },
-                        });
-                    }
-                    break;
                 case 'category':
-                    this.mongooseQuery.find({ 'businessInfo.categories': queryFields[field] });
+                    this.mongooseQuery.find({ 'categories': queryFields[field] });
                     break;
                 // Add more cases for additional fields as needed
             }

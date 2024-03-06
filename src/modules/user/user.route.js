@@ -17,7 +17,10 @@ const changePassword = require('./controllers/auth/changePassword');
 const userSchema = require('./models/userSchema');
 const getUser = require('./controllers/get_user');
 const router = express.Router();
-
+const addToFavorites = require('./controllers/favorites/add_to_favorites')
+const removeFromFavorites = require('./controllers/favorites/remove_from_favorites');
+const validateParamsId = require('../../middlewares/validateParamsId');
+const getFavorites = require('./controllers/favorites/get_favorites');
 
 
 router.route('/register')
@@ -51,5 +54,11 @@ router.route('/current-user')
     .get(getUser);
 
 
+router.route('/favorites')
+    .get(getFavorites)
+
+router.route('/favorites/:id')
+    .post(validateParamsId(), addToFavorites)
+    .delete(validateParamsId(), removeFromFavorites);
 
 module.exports = router;

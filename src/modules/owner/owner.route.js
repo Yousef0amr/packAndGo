@@ -16,6 +16,7 @@ const restPasswordSchema = require('../../common/validationsModel/restPassword')
 const changePasswordSchema = require('../../common/validationsModel/changePassword');
 const changePassword = require('./controllers/auth/changePassword');
 const getOwner = require('./controllers/get_owner');
+const getTopOwners = require('./controllers/get_top_owners');
 const router = express.Router();
 
 
@@ -49,5 +50,11 @@ router.route('/resend-code')
 
 router.route('/current-owner')
     .get(getOwner);
+
+
+router.route('/top-owners')
+    .get(getTopOwners);
+
+
 
 module.exports = router;

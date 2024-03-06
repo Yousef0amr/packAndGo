@@ -32,6 +32,12 @@ const schema = new mongoose.Schema({
         default: false,
         required: true,
     },
+    favorites: [
+        {
+            type: mongoose.Types.ObjectId,
+            ref: "Property"
+        }
+    ],
     role: {
         type: String,
         default: 'user',
